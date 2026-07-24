@@ -24,6 +24,8 @@ try {
   if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
   }
+  const a = localStorage.getItem('bv_accent');
+  if (a) document.documentElement.setAttribute('data-accent', a);
 } catch {}
 `;
 

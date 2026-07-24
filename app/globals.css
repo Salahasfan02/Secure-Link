@@ -11,6 +11,52 @@ html {
   scrollbar-width: thin;
 }
 
+/* Accent theme — swappable via [data-accent] on <html>, set in Settings. */
+:root,
+:root[data-accent="sky"] {
+  --accent-300: #7dd3fc;
+  --accent-400: #38bdf8;
+  --accent-500: #0ea5e9;
+  --accent-600: #0284c7;
+  --accent-900: #0c4a6e;
+}
+:root[data-accent="violet"] {
+  --accent-300: #c4b5fd;
+  --accent-400: #a78bfa;
+  --accent-500: #8b5cf6;
+  --accent-600: #7c3aed;
+  --accent-900: #4c1d95;
+}
+:root[data-accent="emerald"] {
+  --accent-300: #6ee7b7;
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-900: #064e3b;
+}
+:root[data-accent="slate"] {
+  --accent-300: #cbd5e1;
+  --accent-400: #94a3b8;
+  --accent-500: #64748b;
+  --accent-600: #475569;
+  --accent-900: #0f172a;
+}
+
+/* Alpha variants derived from whichever accent is active above. */
+:root {
+  --accent-500-a5: color-mix(in oklab, var(--accent-500) 5%, transparent);
+  --accent-500-a10: color-mix(in oklab, var(--accent-500) 10%, transparent);
+  --accent-500-a20: color-mix(in oklab, var(--accent-500) 20%, transparent);
+  --accent-500-a25: color-mix(in oklab, var(--accent-500) 25%, transparent);
+  --accent-400-a10: color-mix(in oklab, var(--accent-400) 10%, transparent);
+  --accent-400-a20: color-mix(in oklab, var(--accent-400) 20%, transparent);
+  --accent-400-a30: color-mix(in oklab, var(--accent-400) 30%, transparent);
+  --accent-400-a40: color-mix(in oklab, var(--accent-400) 40%, transparent);
+  --accent-400-a60: color-mix(in oklab, var(--accent-400) 60%, transparent);
+  --accent-400-a80: color-mix(in oklab, var(--accent-400) 80%, transparent);
+  --accent-900-a80: color-mix(in oklab, var(--accent-900) 80%, transparent);
+}
+
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
   @apply bg-slate-100 text-slate-900 dark:bg-[#0b0d14] dark:text-slate-100;
@@ -22,7 +68,7 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-900 to-cyan-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/25 transition hover:brightness-110 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[var(--accent-900)] to-[var(--accent-400)] px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[var(--accent-500-a25)] transition hover:brightness-110 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
 }
 
 .btn-ghost {
@@ -34,7 +80,7 @@ body {
 }
 
 .input {
-  @apply w-full rounded-xl border border-slate-300/70 dark:border-white/10 bg-white/80 dark:bg-white/[0.06] px-4 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/30;
+  @apply w-full rounded-xl border border-slate-300/70 dark:border-white/10 bg-white/80 dark:bg-white/[0.06] px-4 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-[var(--accent-400)] focus:ring-2 focus:ring-[var(--accent-400-a30)];
 }
 
 .chip {

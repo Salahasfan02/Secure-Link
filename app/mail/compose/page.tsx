@@ -275,7 +275,7 @@ function ComposeInner() {
         {/* Files */}
         <div
           className={`glass rounded-3xl p-6 transition ${
-            dragging ? "border-sky-400 ring-2 ring-sky-400/30" : ""
+            dragging ? "border-[var(--accent-400)] ring-2 ring-[var(--accent-400-a30)]" : ""
           }`}
           onDragOver={(e) => {
             e.preventDefault();
@@ -318,7 +318,7 @@ function ComposeInner() {
                   key={`${f.name}-${i}`}
                   className="flex items-center gap-3 rounded-xl bg-slate-500/5 px-3 py-2 text-sm dark:bg-white/5"
                 >
-                  <Lock className="h-4 w-4 shrink-0 text-sky-500" />
+                  <Lock className="h-4 w-4 shrink-0 text-[var(--accent-500)]" />
                   <span className="min-w-0 flex-1 truncate">{f.name}</span>
                   <span className="text-xs text-slate-400">
                     {(f.size / 1024 / 1024).toFixed(2)} MB
@@ -346,7 +346,7 @@ function ComposeInner() {
                 key={t.key}
                 className={`flex cursor-pointer gap-3 rounded-2xl border p-3.5 transition ${
                   security[t.key]
-                    ? "border-sky-400/60 bg-sky-500/5"
+                    ? "border-[var(--accent-400-a60)] bg-[var(--accent-500-a5)]"
                     : "border-slate-200/70 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20"
                 }`}
               >
@@ -354,11 +354,11 @@ function ComposeInner() {
                   type="checkbox"
                   checked={security[t.key]}
                   onChange={(e) => setSecurity({ ...security, [t.key]: e.target.checked })}
-                  className="mt-0.5 h-4 w-4 accent-sky-500"
+                  className="mt-0.5 h-4 w-4 accent-[var(--accent-500)]"
                 />
                 <div>
                   <p className="flex items-center gap-1.5 text-sm font-medium">
-                    <t.icon className="h-3.5 w-3.5 text-sky-500" />
+                    <t.icon className="h-3.5 w-3.5 text-[var(--accent-500)]" />
                     {t.label}
                   </p>
                   <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{t.desc}</p>
@@ -368,7 +368,7 @@ function ComposeInner() {
 
             <div className="rounded-2xl border border-slate-200/70 p-3.5 dark:border-white/10">
               <p className="flex items-center gap-1.5 text-sm font-medium">
-                <Clock className="h-3.5 w-3.5 text-sky-500" />
+                <Clock className="h-3.5 w-3.5 text-[var(--accent-500)]" />
                 Expiration
               </p>
               <select

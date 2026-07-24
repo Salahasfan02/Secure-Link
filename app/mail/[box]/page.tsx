@@ -170,7 +170,7 @@ export default function BoxPage({ params }: { params: Promise<{ box: string }> }
             {drafts.map((d) => (
               <div
                 key={d.id}
-                className="glass flex cursor-pointer items-center gap-4 rounded-2xl px-5 py-4 transition hover:border-sky-400/40"
+                className="glass flex cursor-pointer items-center gap-4 rounded-2xl px-5 py-4 transition hover:border-[var(--accent-400-a40)]"
                 onClick={() => router.push(`/mail/compose?draft=${d.id}`)}
               >
                 <div className="min-w-0 flex-1">
@@ -196,7 +196,7 @@ export default function BoxPage({ params }: { params: Promise<{ box: string }> }
         )
       ) : messages === null ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-6 w-6 animate-spin text-sky-500" />
+          <Loader2 className="h-6 w-6 animate-spin text-[var(--accent-500)]" />
         </div>
       ) : filtered.length === 0 ? (
         <EmptyState
@@ -219,11 +219,11 @@ export default function BoxPage({ params }: { params: Promise<{ box: string }> }
               <Link
                 key={m.id}
                 href={`/mail/message/${m.id}`}
-                className={`glass flex items-center gap-4 rounded-2xl px-5 py-4 transition hover:border-sky-400/40 ${
+                className={`glass flex items-center gap-4 rounded-2xl px-5 py-4 transition hover:border-[var(--accent-400-a40)] ${
                   dead ? "opacity-55" : ""
                 }`}
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-900/80 to-cyan-500/80 text-sm font-bold text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent-900-a80)] to-[var(--accent-400-a80)] text-sm font-bold text-white">
                   {(box === "sent" || box === "vault" ? m.recipientEmail : m.senderEmail)[0]?.toUpperCase()}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -258,7 +258,7 @@ export default function BoxPage({ params }: { params: Promise<{ box: string }> }
                       </span>
                     )}
                     {m.security.requireBiometric && (
-                      <span className="chip bg-sky-500/10 text-sky-500">
+                      <span className="chip bg-[var(--accent-500-a10)] text-[var(--accent-500)]">
                         <ScanFace className="h-3 w-3" />
                         biometric lock
                       </span>
@@ -276,7 +276,7 @@ export default function BoxPage({ params }: { params: Promise<{ box: string }> }
                       </span>
                     )}
                     {m.tags.map((t) => (
-                      <span key={t} className="chip bg-cyan-500/10 text-cyan-500">
+                      <span key={t} className="chip bg-[var(--accent-400-a10)] text-[var(--accent-400)]">
                         #{t}
                       </span>
                     ))}

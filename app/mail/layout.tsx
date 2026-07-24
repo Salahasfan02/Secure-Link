@@ -117,7 +117,7 @@ export default function MailLayout({ children }: { children: React.ReactNode }) 
       {/* Sidebar */}
       <aside className="glass flex w-60 shrink-0 flex-col border-r p-4">
         <Link href="/mail/inbox" className="mb-6 flex items-center gap-2.5 px-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-sky-900 to-cyan-500 text-white">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--accent-900)] to-[var(--accent-400)] text-white">
             <Fingerprint className="h-5 w-5" />
           </div>
           <span className="text-lg font-bold tracking-tight">BioVault</span>
@@ -137,7 +137,7 @@ export default function MailLayout({ children }: { children: React.ReactNode }) 
                 href={item.href}
                 className={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
                   active
-                    ? "bg-sky-500/10 text-sky-600 dark:bg-sky-400/10 dark:text-sky-300"
+                    ? "bg-[var(--accent-500-a10)] text-[var(--accent-600)] dark:bg-[var(--accent-400-a10)] dark:text-[var(--accent-300)]"
                     : "text-slate-600 hover:bg-slate-200/60 dark:text-slate-400 dark:hover:bg-white/5"
                 }`}
               >
@@ -157,7 +157,7 @@ export default function MailLayout({ children }: { children: React.ReactNode }) 
                 href={item.href}
                 className={`flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
                   active
-                    ? "bg-sky-500/10 text-sky-600 dark:bg-sky-400/10 dark:text-sky-300"
+                    ? "bg-[var(--accent-500-a10)] text-[var(--accent-600)] dark:bg-[var(--accent-400-a10)] dark:text-[var(--accent-300)]"
                     : "text-slate-600 hover:bg-slate-200/60 dark:text-slate-400 dark:hover:bg-white/5"
                 }`}
               >
@@ -239,7 +239,7 @@ export default function MailLayout({ children }: { children: React.ReactNode }) 
             </button>
 
             <div
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-sky-900 to-cyan-500 text-sm font-bold text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent-900)] to-[var(--accent-400)] text-sm font-bold text-white"
               title={me?.email}
             >
               {me?.email?.[0]?.toUpperCase() ?? "?"}

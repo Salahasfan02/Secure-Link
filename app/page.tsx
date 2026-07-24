@@ -10,18 +10,18 @@ export default async function Landing() {
   return (
     <main className="relative flex-1 overflow-hidden">
       {/* ambient gradient blobs */}
-      <div className="pointer-events-none absolute -top-40 -left-40 h-[480px] w-[480px] rounded-full bg-sky-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/3 -right-40 h-[420px] w-[420px] rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -top-40 -left-40 h-[480px] w-[480px] rounded-full bg-[var(--accent-500-a20)] blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 -right-40 h-[420px] w-[420px] rounded-full bg-[var(--accent-400-a20)] blur-3xl" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 pt-24 pb-20 text-center">
-        <div className="glass animate-rise mb-8 flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-sky-600 dark:text-sky-300">
+        <div className="glass animate-rise mb-8 flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-[var(--accent-600)] dark:text-[var(--accent-300)]">
           <ShieldCheck className="h-3.5 w-3.5" />
           End-to-end encrypted · Zero passwords
         </div>
 
         <h1 className="animate-rise max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">
           Send sensitive files,
-          <span className="bg-gradient-to-r from-sky-900 to-cyan-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[var(--accent-900)] to-[var(--accent-400)] bg-clip-text text-transparent">
             {" "}
             unlocked by you.
           </span>
@@ -62,7 +62,7 @@ export default async function Landing() {
             },
           ].map((f) => (
             <div key={f.title} className="glass animate-rise rounded-2xl p-6 text-left">
-              <f.icon className="mb-3 h-6 w-6 text-sky-500" />
+              <f.icon className="mb-3 h-6 w-6 text-[var(--accent-500)]" />
               <h3 className="mb-1.5 font-semibold">{f.title}</h3>
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">{f.body}</p>
             </div>

@@ -29,9 +29,9 @@ interface AuditEvent {
 const EVENT_STYLE: Record<string, { icon: typeof LogIn; label: string; cls: string }> = {
   login: { icon: LogIn, label: "Signed in", cls: "text-emerald-500 bg-emerald-500/10" },
   logout: { icon: LogOut, label: "Signed out", cls: "text-slate-500 bg-slate-500/10" },
-  register: { icon: UserPlus, label: "Account created", cls: "text-sky-500 bg-sky-500/10" },
-  sent: { icon: Send, label: "File sent", cls: "text-sky-500 bg-sky-500/10" },
-  opened: { icon: Eye, label: "File opened", cls: "text-cyan-500 bg-cyan-500/10" },
+  register: { icon: UserPlus, label: "Account created", cls: "text-[var(--accent-500)] bg-[var(--accent-500-a10)]" },
+  sent: { icon: Send, label: "File sent", cls: "text-[var(--accent-500)] bg-[var(--accent-500-a10)]" },
+  opened: { icon: Eye, label: "File opened", cls: "text-[var(--accent-400)] bg-[var(--accent-400-a10)]" },
   deleted: { icon: Trash2, label: "Deleted", cls: "text-slate-500 bg-slate-500/10" },
   revoked: { icon: ShieldOff, label: "Access revoked", cls: "text-rose-500 bg-rose-500/10" },
   expired: { icon: Clock, label: "Expired", cls: "text-amber-500 bg-amber-500/10" },
@@ -76,7 +76,7 @@ export default function ActivityPage() {
 
       {events === null ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="h-6 w-6 animate-spin text-sky-500" />
+          <Loader2 className="h-6 w-6 animate-spin text-[var(--accent-500)]" />
         </div>
       ) : events.length === 0 ? (
         <div className="glass flex flex-col items-center rounded-3xl py-20">

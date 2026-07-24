@@ -1,15 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Fingerprint, KeyRound, ShieldCheck, Server, Loader2 } from "lucide-react";
+import { Fingerprint, KeyRound, ShieldCheck, Server, Loader2, Palette, Check } from "lucide-react";
 import { api } from "@/lib/client/api";
 import { hasIdentity } from "@/lib/client/crypto";
+
+const ACCENTS = [
+  { key: "sky", label: "Techy Blue", swatch: "#0ea5e9" },
+  { key: "violet", label: "Violet", swatch: "#8b5cf6" },
+  { key: "emerald", label: "Emerald", swatch: "#10b981" },
+  { key: "slate", label: "Slate", swatch: "#64748b" },
+] as const;
 
 export default function SettingsPage() {
   const [me, setMe] = useState<{ email: string } | null>(null);
   const [publicJwk, setPublicJwk] = useState<JsonWebKey | null>(null);
   const [fingerprint, setFingerprint] = useState<string>("");
   const [keyOnDevice, setKeyOnDevice] = useState<boolean | null>(null);
+  const [accent, setAccent] = useState<string>("sky");
+
+  useEffect(() => {
+    setAccent(localStorage.getItem("bv_accent") ?? "sky");
+  }, []);
+
+  function applyAccent(key: string) {
+    document.documentElement.setAttribute("data-accent", key);
+    localStorage.setItem("bv_accent", key);
+    setAccent(key);
+  }
 
   useEffect(() => {
     api<{ user: { email: string }; publicJwk: JsonWebKey | null }>("/api/auth/me").then(
@@ -32,7 +50,7 @@ export default function SettingsPage() {
   if (!me) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-sky-500" />
+        <Loader2 className="h-6 w-6 animate-spin text-[var(--accent-500)]" />
       </div>
     );
   }
@@ -47,13 +65,42 @@ export default function SettingsPage() {
             <Fingerprint className="h-4 w-4" /> Profile
           </h2>
           <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-900 to-cyan-500 text-xl font-bold text-white">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[var(--accent-900)] to-[var(--accent-400)] text-xl font-bold text-white">
               {me.email[0]?.toUpperCase()}
             </div>
             <div>
               <p className="font-semibold">{me.email}</p>
               <p className="text-sm text-slate-500">Passwordless account · biometric sign-in</p>
             </div>
+          </div>
+        </section>
+
+        <section className="glass rounded-3xl p-6">
+          <h2 className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <Palette className="h-4 w-4" /> Appearance
+          </h2>
+          <p className="mb-4 text-sm text-slate-500">
+            Choose an accent color for buttons, links, and highlights across the app.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {ACCENTS.map((a) => (
+              <button
+                key={a.key}
+                onClick={() => applyAccent(a.key)}
+                className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition ${
+                  accent === a.key
+                    ? "border-[var(--accent-400)] bg-[var(--accent-500-a10)]"
+                    : "border-slate-200/70 hover:border-slate-300 dark:border-white/10 dark:hover:border-white/20"
+                }`}
+              >
+                <span
+                  className="h-4 w-4 rounded-full border border-black/10"
+                  style={{ backgroundColor: a.swatch }}
+                />
+                {a.label}
+                {accent === a.key && <Check className="h-3.5 w-3.5 text-[var(--accent-500)]" />}
+              </button>
+            ))}
           </div>
         </section>
 

@@ -163,7 +163,7 @@ export default function MessagePage({ params }: { params: Promise<{ id: string }
   if (!meta) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-sky-500" />
+        <Loader2 className="h-6 w-6 animate-spin text-[var(--accent-500)]" />
       </div>
     );
   }
@@ -182,7 +182,7 @@ export default function MessagePage({ params }: { params: Promise<{ id: string }
     meta.security.requireBiometric && {
       icon: ScanFace,
       label: "Biometric required per open",
-      cls: "bg-sky-500/10 text-sky-500",
+      cls: "bg-[var(--accent-500-a10)] text-[var(--accent-500)]",
     },
     meta.security.watermark && {
       icon: Stamp,
@@ -234,7 +234,7 @@ export default function MessagePage({ params }: { params: Promise<{ id: string }
               </span>
             ))}
             {meta.tags.map((t) => (
-              <span key={t} className="chip bg-cyan-500/10 text-cyan-500">
+              <span key={t} className="chip bg-[var(--accent-400-a10)] text-[var(--accent-400)]">
                 #{t}
               </span>
             ))}
@@ -247,7 +247,7 @@ export default function MessagePage({ params }: { params: Promise<{ id: string }
               key={a.id}
               className="flex items-center gap-3 rounded-xl bg-slate-500/5 px-4 py-3 text-sm dark:bg-white/5"
             >
-              <Paperclip className="h-4 w-4 shrink-0 text-sky-500" />
+              <Paperclip className="h-4 w-4 shrink-0 text-[var(--accent-500)]" />
               <span className="min-w-0 flex-1 truncate font-medium">{a.filename}</span>
               <span className="text-xs text-slate-400">
                 {(a.size / 1024 / 1024).toFixed(2)} MB · encrypted

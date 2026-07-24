@@ -43,12 +43,12 @@ export default function LoginPage() {
 
   return (
     <main className="relative flex flex-1 items-center justify-center overflow-hidden px-4">
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-sky-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-[var(--accent-500-a20)] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 right-1/4 h-96 w-96 rounded-full bg-[var(--accent-400-a20)] blur-3xl" />
 
       <div className="glass animate-rise relative w-full max-w-md rounded-3xl p-8 shadow-2xl">
         <div className="mb-6 flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-900 to-cyan-500 text-white">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--accent-900)] to-[var(--accent-400)] text-white">
             <ScanFace className="h-6 w-6" />
           </div>
           <div>
@@ -108,7 +108,7 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
           New here?{" "}
-          <Link href="/register" className="font-semibold text-sky-500 hover:underline">
+          <Link href="/register" className="font-semibold text-[var(--accent-500)] hover:underline">
             Create your vault
           </Link>
         </p>
