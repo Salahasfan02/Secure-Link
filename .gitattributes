@@ -1,0 +1,4 @@
+*.png binary
+*.db binary
+*.db-shm binary
+*.db-wal binary
